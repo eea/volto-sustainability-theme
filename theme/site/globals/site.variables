@@ -1,0 +1,37 @@
+/*-------------------
+       Fonts
+--------------------*/
+
+@fontName: "Open Sans";
+
+@pageFont          : @fontName, Verdana, Helvetica, Arial, sans-serif;
+
+@themeFontPath     : "../assets/fonts";
+@googleFontName    : 'Open Sans';
+@importGoogleFonts : false;
+@googleFontSizes   : '200,300,400,500,600,700,400italic,700italic';
+
+/*-------------------
+      Site Colors
+--------------------*/
+
+/*---  Colors  ---*/
+/* EEA Palette */
+@blue: #004B87;
+@lightBlue: #086ca3;
+@darkBlue: #274357;
+@lightGrey: #999;
+@lighterGray: #cccccc;
+@darkGrey: #666;
+@purple: #8e004d;
+@green: #00888A;
+@lightGreen: #027572;
+@black: #333;
+@pureBlack: #000;
+@grayPrint: #bbb;
+
+/*-------------------
+      Responsive
+--------------------*/
+
+@mobileWidth: 1279px;

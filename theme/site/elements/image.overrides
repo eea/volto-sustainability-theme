@@ -1,0 +1,14 @@
+/*-------------------
+      HEADER
+--------------------*/
+
+.eea-logo {
+  top: -0.2px;
+  display: block;
+  min-width: 209px;
+  height: 40px;
+}
+
+#page-document > p.block.image.align.center:first-child {
+  margin: -2rem -1rem 0 -1rem !important;
+}

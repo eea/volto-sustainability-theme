@@ -1,0 +1,15 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+.ui.label {
+  background: #ececec;
+  color: @pureBlack;
+  font-weight: normal;
+}
+
+a.ui.label:hover {
+  border-color: #205c90;
+  background: #00888a;
+  color: White;
+}
