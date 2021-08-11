@@ -384,7 +384,7 @@ class Footer extends Component {
                   </a>
                 </p>
 
-                <p className="colophon-links">
+                <p className="colophon-links" style={{ visibility: 'hidden' }}>
                   <a
                     href="https://www.eea.europa.eu/login_form"
                     onClick={(evt) =>
