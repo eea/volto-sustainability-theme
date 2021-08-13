@@ -5,8 +5,7 @@
 .eea-logo {
   top: -0.2px;
   display: block;
-  min-width: 209px;
-  height: 40px;
+  height: 45px;
 }
 
 #page-document > p.block.image.align.center:first-child {
