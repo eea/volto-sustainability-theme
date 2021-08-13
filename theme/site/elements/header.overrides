@@ -30,6 +30,25 @@
 .header .logo-nav-wrapper {
   align-items: center;
 
+  .logo a::after {
+    content: "DRAFT";
+    position: absolute;
+    display: flex;
+    align-items: center;
+    height: auto;
+    font-size: 20px;
+    border-top: 4px solid #d92c3a;
+    border-radius: 2px;
+    color: #fff;
+    padding: 0.8rem;
+    margin-left: 14rem;
+    margin-top: -2.8rem;
+    font-weight: 500;
+    background-color: rgba(0,0,0,34%);
+    box-shadow: 5px 4px 11px 0px #ffffff24;
+    z-index: 2;
+  }
+
   .navigation {
     display: flex;
     width: 100%;

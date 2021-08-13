@@ -265,6 +265,7 @@ class Navigation extends Component {
               key="/sustainability"
               className="item"
               activeClassName="active"
+              style={{ visibility: 'hidden' }}
             >
               Sustainability
               <sup
@@ -300,7 +301,10 @@ class Navigation extends Component {
               on="click"
               className="large screen only custom-search-pop"
               trigger={
-                <div className="tools-change-language">
+                <div
+                  className="tools-change-language"
+                  style={{ visibility: 'hidden' }}
+                >
                   <Icon name="globe" size="big" />
                   <span>EN</span>
                 </div>
