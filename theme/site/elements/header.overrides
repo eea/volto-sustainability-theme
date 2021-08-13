@@ -30,6 +30,7 @@
 .header .logo-nav-wrapper {
   align-items: center;
 
+ /*
   .logo a::after{
     content: "DRAFT";
     position: absolute;
@@ -48,6 +49,7 @@
     box-shadow: 5px 4px 11px 0px #ffffff24;
     z-index: 2;
   }
+  */
 
   .navigation {
     display: flex;
