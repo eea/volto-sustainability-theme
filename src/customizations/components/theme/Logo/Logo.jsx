@@ -38,10 +38,7 @@ const Logo = () => {
     <Link
       to={url}
       title={intl.formatMessage(messages.site)}
-      onClick={(evt) => {
-        evt.preventDefault();
-        window.location = url;
-      }}
+      onClick={(evt) => {}}
     >
       <Image
         src={LogoImage}

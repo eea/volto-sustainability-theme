@@ -206,9 +206,7 @@ class Navigation extends Component {
    * @returns {undefined}
    */
   onLinkClick(evt, url) {
-    evt.preventDefault();
     this.closeMobileMenu();
-    window.location = url;
   }
 
   /**
