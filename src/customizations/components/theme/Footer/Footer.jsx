@@ -17,7 +17,7 @@ import EUflag from '../../../../../theme/site/assets/images/europe-flag.svg';
 class Footer extends Component {
   onLinkClick(evt, url) {
     evt.preventDefault();
-    window.location = url;
+    //window.location = url;
   }
 
   render() {

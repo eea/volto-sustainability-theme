@@ -74,7 +74,7 @@ class SearchWidget extends Component {
    */
   onLinkClick(evt, url) {
     evt.preventDefault();
-    window.location = url;
+    //window.location = url;
   }
 
   /**
