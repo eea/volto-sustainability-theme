@@ -4,7 +4,7 @@ pipeline {
   environment {
         GIT_NAME = "volto-sustainability-theme"
         NAMESPACE = "@eeacms"
-        SONARQUBE_TAGS = "volto.eea.europa.eu,sustainability.eionet.europa.eu"
+        SONARQUBE_TAGS = "volto.eea.europa.eu,sustainability.eionet.europa.eu,circularity.eea.europa.eu"
         DEPENDENCIES = ""
     }
 
