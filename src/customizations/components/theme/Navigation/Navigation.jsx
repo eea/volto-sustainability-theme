@@ -13,18 +13,10 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { compose } from 'redux';
-import {
-  Accordion,
-  Button,
-  Icon,
-  Image,
-  List,
-  Menu,
-  Popup,
-} from 'semantic-ui-react';
+import { Button, Icon, Image, List, Menu, Popup } from 'semantic-ui-react';
 import config from '@plone/volto/registry';
 import EUflag from '../../../../../theme/site/assets/images/europe-flag.svg';
-import throttle from 'lodash.throttle';
+import { throttle } from 'lodash';
 
 const messages = defineMessages({
   closeMobileMenu: {
@@ -216,7 +208,7 @@ class Navigation extends Component {
    */
   render() {
     const { lang } = this.props;
-    const { activeIndex, is_visible } = this.state;
+    const { is_visible } = this.state;
 
     return (
       <nav className="navigation">
