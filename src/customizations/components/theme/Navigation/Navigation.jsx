@@ -329,8 +329,9 @@ class Navigation extends Component {
               }
               position="top left"
             />
+            {/* Language selector in mobile menu */}
 
-            <div className="mobile tablet computer only fill-width">
+            {/* <div className="mobile tablet computer only fill-width">
               <Accordion fluid styled>
                 <Accordion.Title
                   active={activeIndex === 0}
@@ -361,8 +362,7 @@ class Navigation extends Component {
                   </List>
                 </Accordion.Content>
               </Accordion>
-            </div>
-
+            </div> */}
             <div className="tools-search-wrapper">
               {!this.props.token && (
                 <div className="tools">
@@ -374,7 +374,6 @@ class Navigation extends Component {
                 <SearchWidget pathname={this.props.pathname} />
               </div>
             </div>
-
             <div>
               <a
                 href="https://europa.eu/european-union/about-eu_en"
