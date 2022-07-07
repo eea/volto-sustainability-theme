@@ -13,7 +13,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { compose } from 'redux';
-import { Button, Icon, Image, List, Menu, Popup } from 'semantic-ui-react';
+import { Button, Icon, Image, Menu } from 'semantic-ui-react';
 import config from '@plone/volto/registry';
 import EUflag from '../../../../../theme/site/assets/images/europe-flag.svg';
 import { throttle } from 'lodash';
@@ -28,37 +28,6 @@ const messages = defineMessages({
     defaultMessage: 'Open menu',
   },
 });
-const languagesList = [
-  { name: 'Albanian', code: 'sq' },
-  { name: 'Български', code: 'bg' },
-  { name: 'Bosnian', code: 'bs' },
-  { name: 'čeština', code: 'cs' },
-  { name: 'Hrvatski', code: 'hr' },
-  { name: 'dansk', code: 'da' },
-  { name: 'Nederlands', code: 'nl' },
-  { name: 'ελληνικά', code: 'el' },
-  { name: 'English', code: 'en' },
-  { name: 'eesti', code: 'et' },
-  { name: 'Suomi', code: 'fi' },
-  { name: 'Français', code: 'fr' },
-  { name: 'Deutsch', code: 'de' },
-  { name: 'magyar', code: 'hu' },
-  { name: 'Íslenska', code: 'is' },
-  { name: 'italiano', code: 'it' },
-  { name: 'Latviešu', code: 'lv' },
-  { name: 'lietuvių', code: 'lt' },
-  { name: 'Macedonian', code: 'mk' },
-  { name: 'Malti', code: 'mt' },
-  { name: 'Norsk', code: 'no' },
-  { name: 'polski', code: 'pl' },
-  { name: 'Português', code: 'pt' },
-  { name: 'Română', code: 'ro' },
-  { name: 'slovenčina', code: 'sk' },
-  { name: 'Slovenščina', code: 'sl' },
-  { name: 'Español', code: 'es' },
-  { name: 'Svenska', code: 'sv' },
-  { name: 'Türkçe', code: 'tr' },
-];
 
 /**
  * Navigation container class.
@@ -249,47 +218,48 @@ class Navigation extends Component {
           secondary
           className={this.state.isMobileMenuOpen ? 'open' : 'large screen only'}
         >
-          <div className="navigation-links">
-            <NavLink
-              to="/sustainability"
-              key="/sustainability"
-              className="item"
-              activeClassName="active"
-              style={{ visibility: 'hidden' }}
-            >
-              Sustainability
-              <sup
-                style={{
-                  color: 'red',
-                  fontSize: '65%',
-                  transform: 'rotate(0deg)',
-                }}
-              >
-                BETA
-              </sup>
-            </NavLink>
-            {this.props.items.map((item) => (
+          <div className="navigation-search-wrapper">
+            <div className="navigation-links">
               <NavLink
-                to={item.url === '' ? '/' : item.url}
-                key={item.url}
+                to="/sustainability"
+                key="/sustainability"
                 className="item"
                 activeClassName="active"
-                exact={
-                  config.settings.isMultilingual
-                    ? item.url === `/${lang}`
-                    : item.url === ''
-                }
-                onClick={(evt) => this.onLinkClick(evt, item.url || '/')}
+                style={{ visibility: 'hidden' }}
               >
-                {item.title}
+                Sustainability
+                <sup
+                  style={{
+                    color: 'red',
+                    fontSize: '65%',
+                    transform: 'rotate(0deg)',
+                  }}
+                >
+                  BETA
+                </sup>
               </NavLink>
-            ))}
-          </div>
+              {this.props.items.map((item) => (
+                <NavLink
+                  to={item.url === '' ? '/' : item.url}
+                  key={item.url}
+                  className="item"
+                  activeClassName="active"
+                  exact={
+                    config.settings.isMultilingual
+                      ? item.url === `/${lang}`
+                      : item.url === ''
+                  }
+                  onClick={(evt) => this.onLinkClick(evt, item.url || '/')}
+                >
+                  {item.title}
+                </NavLink>
+              ))}
+            </div>
 
-          <div className="tools-wrapper">
-            {/* Language selector in mobile menu */}
+            <div className="tools-wrapper">
+              {/* Language selector in mobile menu */}
 
-            {/* <div className="mobile tablet computer only fill-width">
+              {/* <div className="mobile tablet computer only fill-width">
               <Accordion fluid styled>
                 <Accordion.Title
                   active={activeIndex === 0}
@@ -321,32 +291,33 @@ class Navigation extends Component {
                 </Accordion.Content>
               </Accordion>
             </div> */}
-            <div className="tools-search-wrapper">
-              {!this.props.token && (
-                <div className="tools">
-                  <Anontools handleClick={this.closeMobileMenu} />
-                </div>
-              )}
+              <div className="tools-search-wrapper">
+                {!this.props.token && (
+                  <div className="tools">
+                    <Anontools handleClick={this.closeMobileMenu} />
+                  </div>
+                )}
 
-              <div className="search">
-                <SearchWidget pathname={this.props.pathname} />
+                <div className="search">
+                  <SearchWidget pathname={this.props.pathname} />
+                </div>
               </div>
-            </div>
-            <div>
-              <a
-                href="https://europa.eu/european-union/about-eu_en"
-                title="The EEA is an agency of the European Union"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Image
-                  src={EUflag}
-                  alt="The EEA is an agency of the European Union"
+              <div>
+                <a
+                  href="https://europa.eu/european-union/about-eu_en"
                   title="The EEA is an agency of the European Union"
-                  height={64}
-                  className="eu-flag"
-                />
-              </a>
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Image
+                    src={EUflag}
+                    alt="The EEA is an agency of the European Union"
+                    title="The EEA is an agency of the European Union"
+                    height={64}
+                    className="eu-flag"
+                  />
+                </a>
+              </div>
             </div>
           </div>
         </Menu>

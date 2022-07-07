@@ -33,9 +33,6 @@
     justify-content: center;
   }
 
-  .logo {
-    flex: 1 1 auto !important;
-  }
 }
 
 .header .logo-nav-wrapper .ui.pointing.secondary {
@@ -46,9 +43,9 @@
   margin: 0 !important;
 
   .navigation-links {
-    display: inline-flex;
-    width: 100%;
-    justify-content: flex-end;
+    display: flex;
+    flex-grow: 2;
+    align-items: center;
   }
 
   .tools-wrapper {
@@ -71,4 +68,10 @@
   .ui.header {
     padding: 0;
   }
+}
+
+.navigation-search-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
