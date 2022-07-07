@@ -287,40 +287,6 @@ class Navigation extends Component {
           </div>
 
           <div className="tools-wrapper">
-            <Popup
-              on="click"
-              className="large screen only custom-search-pop"
-              trigger={
-                <div
-                  className="tools-change-language"
-                  style={{ visibility: 'hidden' }}
-                >
-                  <Icon name="globe" size="big" />
-                  <span>EN</span>
-                </div>
-              }
-              content={
-                <List bulleted className="languages-list">
-                  {languagesList.map((language, index) => (
-                    <List.Item key={index}>
-                      <List.Content>
-                        <List.Description>
-                          <a
-                            href={`/${language.code}`}
-                            onClick={(evt) =>
-                              this.onLinkClick(evt, `/${language.code}`)
-                            }
-                          >
-                            {`${language.name} (${language.code})`}
-                          </a>
-                        </List.Description>
-                      </List.Content>
-                    </List.Item>
-                  ))}
-                </List>
-              }
-              position="top left"
-            />
             {/* Language selector in mobile menu */}
 
             {/* <div className="mobile tablet computer only fill-width">

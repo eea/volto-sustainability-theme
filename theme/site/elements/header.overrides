@@ -23,10 +23,6 @@
   padding: 0;
 }
 
-.ui.basic.segment .header {
-  padding: 0 15px;
-}
-
 .header .logo-nav-wrapper {
   align-items: center;
 
@@ -35,6 +31,10 @@
     width: 100%;
     align-items: center;
     justify-content: center;
+  }
+
+  .logo {
+    flex: 1 1 auto !important;
   }
 }
 
@@ -48,7 +48,7 @@
   .navigation-links {
     display: inline-flex;
     width: 100%;
-    justify-content: center;
+    justify-content: flex-end;
   }
 
   .tools-wrapper {
