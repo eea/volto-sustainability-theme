@@ -204,6 +204,15 @@
     i {
       display: none;
     }
+
+  .ui.secondary.pointing.menu .item.sign-in {
+    align-self: flex-start;
+  }
+
+  .ui.secondary.menu .item.sign-in {
+    align-self: flex-start;
+  }
+
   }
 
   .tools-change-language {
@@ -216,12 +225,7 @@
       display: none;
     }
   }
-  .ui.secondary.pointing.menu .item{
-    align-self:unset;
-  }
-  .ui.secondary.menu .item {
-    align-self: unset;
-  }
+
 }
 
 .sign-in {
