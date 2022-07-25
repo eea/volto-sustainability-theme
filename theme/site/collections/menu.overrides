@@ -80,6 +80,9 @@
 }
 
 @media only screen and (max-width: @mobileWidth) {
+   .navigation-search-wrapper{
+    display: inline-block;
+  }
   .header-wrapper .ui.pointing.secondary.stackable.open.menu {
     position: fixed;
     z-index: 100;
@@ -212,6 +215,12 @@
     span {
       display: none;
     }
+  }
+  .ui.secondary.pointing.menu .item{
+    align-self:unset;
+  }
+  .ui.secondary.menu .item {
+    align-self: unset;
   }
 }
 
