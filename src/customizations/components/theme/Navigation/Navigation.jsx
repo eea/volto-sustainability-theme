@@ -182,6 +182,7 @@ class Navigation extends Component {
 
     return (
       <OutsideClickHandler
+        display="contents"
         onOutsideClick={() => {
           this.closeMobileMenu();
         }}
