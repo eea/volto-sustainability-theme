@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { compose } from 'redux';
 import { Button, Icon, Image, Menu } from 'semantic-ui-react';
-import OutsideClickHandler from 'react-outside-click-handler';
+import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import config from '@plone/volto/registry';
 import EUflag from '../../../../../theme/site/assets/images/europe-flag.svg';
 import { throttle } from 'lodash';
@@ -69,6 +69,7 @@ class Navigation extends Component {
       activeIndex: -1,
       is_visible: false,
     };
+    this.navigationRef = React.createRef();
   }
 
   componentDidMount() {
@@ -77,8 +78,24 @@ class Navigation extends Component {
       'scroll',
       throttle(() => scrollComponent.toggleVisibility(), 500),
     );
+    document.addEventListener('mousedown', this.handleClickOutside, false);
   }
 
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+
+  handleClickOutside = (e) => {
+    if (
+      this.navigationRef &&
+      doesNodeContainClick(this.navigationRef.current, e)
+    )
+      return;
+    if (this.state.isMobileMenuOpen) {
+      this.closeMobileMenu();
+      return true;
+    }
+  };
   /**
    * Toggle visibility based on page y offset
    */
@@ -181,94 +198,86 @@ class Navigation extends Component {
     const { is_visible } = this.state;
 
     return (
-      <OutsideClickHandler
-        display="contents"
-        onOutsideClick={() => {
-          this.closeMobileMenu();
-        }}
-      >
-        <nav className="navigation">
-          <div className="hamburger-wrapper mobile tablet computer only">
-            <button
-              className={cx('hamburger hamburger--boring', {
-                'is-active': this.state.isMobileMenuOpen,
-              })}
-              aria-label={
-                this.state.isMobileMenuOpen
-                  ? this.props.intl.formatMessage(messages.closeMobileMenu, {
-                      type: this.props.type,
-                    })
-                  : this.props.intl.formatMessage(messages.openMobileMenu, {
-                      type: this.props.type,
-                    })
-              }
-              title={
-                this.state.isMobileMenuOpen
-                  ? this.props.intl.formatMessage(messages.closeMobileMenu, {
-                      type: this.props.type,
-                    })
-                  : this.props.intl.formatMessage(messages.openMobileMenu, {
-                      type: this.props.type,
-                    })
-              }
-              type="button"
-              onClick={this.toggleMobileMenu}
-            >
-              <span className="hamburger-box">
-                <span className="hamburger-inner" />
-              </span>
-            </button>
-          </div>
-          <Menu
-            stackable
-            pointing
-            secondary
-            className={
-              this.state.isMobileMenuOpen ? 'open' : 'large screen only'
+      <nav className="navigation" ref={this.navigationRef}>
+        <div className="hamburger-wrapper mobile tablet computer only">
+          <button
+            className={cx('hamburger hamburger--boring', {
+              'is-active': this.state.isMobileMenuOpen,
+            })}
+            aria-label={
+              this.state.isMobileMenuOpen
+                ? this.props.intl.formatMessage(messages.closeMobileMenu, {
+                    type: this.props.type,
+                  })
+                : this.props.intl.formatMessage(messages.openMobileMenu, {
+                    type: this.props.type,
+                  })
             }
+            title={
+              this.state.isMobileMenuOpen
+                ? this.props.intl.formatMessage(messages.closeMobileMenu, {
+                    type: this.props.type,
+                  })
+                : this.props.intl.formatMessage(messages.openMobileMenu, {
+                    type: this.props.type,
+                  })
+            }
+            type="button"
+            onClick={this.toggleMobileMenu}
           >
-            <div className="navigation-search-wrapper">
-              <div className="navigation-links">
+            <span className="hamburger-box">
+              <span className="hamburger-inner" />
+            </span>
+          </button>
+        </div>
+        <Menu
+          stackable
+          pointing
+          secondary
+          className={this.state.isMobileMenuOpen ? 'open' : 'large screen only'}
+        >
+          <div className="navigation-search-wrapper">
+            <div className="navigation-links">
+              <NavLink
+                to="/sustainability"
+                key="/sustainability"
+                className="item"
+                activeClassName="active"
+                style={{ visibility: 'hidden' }}
+              >
+                Sustainability
+                <sup
+                  style={{
+                    color: 'red',
+                    fontSize: '65%',
+                    transform: 'rotate(0deg)',
+                  }}
+                >
+                  BETA
+                </sup>
+              </NavLink>
+              {this.props.items.map((item) => (
                 <NavLink
-                  to="/sustainability"
-                  key="/sustainability"
+                  to={item.url === '' ? '/' : item.url}
+                  key={item.url}
                   className="item"
                   activeClassName="active"
-                  style={{ visibility: 'hidden' }}
+                  exact={
+                    config.settings.isMultilingual
+                      ? item.url === `/${lang}`
+                      : item.url === ''
+                  }
+                  onClick={(evt) => this.onLinkClick(evt, item.url || '/')}
                 >
-                  Sustainability
-                  <sup
-                    style={{
-                      color: 'red',
-                      fontSize: '65%',
-                      transform: 'rotate(0deg)',
-                    }}
-                  >
-                    BETA
-                  </sup>
+                  {item.title}
                 </NavLink>
-                {this.props.items.map((item) => (
-                  <NavLink
-                    to={item.url === '' ? '/' : item.url}
-                    key={item.url}
-                    className="item"
-                    activeClassName="active"
-                    exact={
-                      config.settings.isMultilingual
-                        ? item.url === `/${lang}`
-                        : item.url === ''
-                    }
-                    onClick={(evt) => this.onLinkClick(evt, item.url || '/')}
-                  >
-                    {item.title}
-                  </NavLink>
-                ))}
-              </div>
+              ))}
+            </div>
 
-              <div className="tools-wrapper">
-                {/* Language selector in mobile menu */}
+            <div className="tools-wrapper">
+              {/* Language selector in mobile menu */}
 
-                {/* <div className="mobile tablet computer only fill-width">
+              {/* <div className="mobile tablet computer only fill-width">
               <Accordion fluid styled>
                 <Accordion.Title
                   active={activeIndex === 0}
@@ -300,46 +309,45 @@ class Navigation extends Component {
                 </Accordion.Content>
               </Accordion>
             </div> */}
-                <div className="tools-search-wrapper">
-                  {!this.props.token && (
-                    <div className="tools">
-                      <Anontools handleClick={this.closeMobileMenu} />
-                    </div>
-                  )}
-
-                  <div className="search">
-                    <SearchWidget pathname={this.props.pathname} />
+              <div className="tools-search-wrapper">
+                {!this.props.token && (
+                  <div className="tools">
+                    <Anontools handleClick={this.closeMobileMenu} />
                   </div>
-                </div>
-                <div>
-                  <a
-                    href="https://europa.eu/european-union/about-eu_en"
-                    title="The EEA is an agency of the European Union"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <Image
-                      src={EUflag}
-                      alt="The EEA is an agency of the European Union"
-                      title="The EEA is an agency of the European Union"
-                      height={64}
-                      className="eu-flag"
-                    />
-                  </a>
+                )}
+
+                <div className="search">
+                  <SearchWidget pathname={this.props.pathname} />
                 </div>
               </div>
+              <div>
+                <a
+                  href="https://europa.eu/european-union/about-eu_en"
+                  title="The EEA is an agency of the European Union"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Image
+                    src={EUflag}
+                    alt="The EEA is an agency of the European Union"
+                    title="The EEA is an agency of the European Union"
+                    height={64}
+                    className="eu-flag"
+                  />
+                </a>
+              </div>
             </div>
-          </Menu>
+          </div>
+        </Menu>
 
-          {/* Back to top button */}
+        {/* Back to top button */}
 
-          {is_visible && (
-            <Button icon id="button" onClick={() => this.scrollToTop()}>
-              <Icon name="arrow up" />
-            </Button>
-          )}
-        </nav>
-      </OutsideClickHandler>
+        {is_visible && (
+          <Button icon id="button" onClick={() => this.scrollToTop()}>
+            <Icon name="arrow up" />
+          </Button>
+        )}
+      </nav>
     );
   }
 }
