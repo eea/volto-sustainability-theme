@@ -206,11 +206,11 @@
     }
 
   .ui.secondary.pointing.menu .item.sign-in {
-    align-self: flex-end;
+    align-self: flex-start;
   }
 
   .ui.secondary.menu .item.sign-in {
-    align-self: flex-end;
+    align-self: flex-start;
   }
 
   }
