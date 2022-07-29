@@ -2,7 +2,7 @@
        Fonts
 --------------------*/
 
-@fontName: "Open Sans";
+@fontName: "Poppins";
 
 @pageFont          : @fontName, Verdana, Helvetica, Arial, sans-serif;
 

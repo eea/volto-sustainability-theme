@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { compose } from 'redux';
 import { Button, Icon, Image, Menu } from 'semantic-ui-react';
+import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import config from '@plone/volto/registry';
 import EUflag from '../../../../../theme/site/assets/images/europe-flag.svg';
 import { throttle } from 'lodash';
@@ -68,6 +69,7 @@ class Navigation extends Component {
       activeIndex: -1,
       is_visible: false,
     };
+    this.navigationRef = React.createRef();
   }
 
   componentDidMount() {
@@ -76,8 +78,24 @@ class Navigation extends Component {
       'scroll',
       throttle(() => scrollComponent.toggleVisibility(), 500),
     );
+    document.addEventListener('mousedown', this.handleClickOutside, false);
   }
 
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+
+  handleClickOutside = (e) => {
+    if (
+      this.navigationRef &&
+      doesNodeContainClick(this.navigationRef.current, e)
+    )
+      return;
+    if (this.state.isMobileMenuOpen) {
+      this.closeMobileMenu();
+      return true;
+    }
+  };
   /**
    * Toggle visibility based on page y offset
    */
@@ -180,7 +198,7 @@ class Navigation extends Component {
     const { is_visible } = this.state;
 
     return (
-      <nav className="navigation">
+      <nav className="navigation" ref={this.navigationRef}>
         <div className="hamburger-wrapper mobile tablet computer only">
           <button
             className={cx('hamburger hamburger--boring', {
