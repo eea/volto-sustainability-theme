@@ -141,3 +141,8 @@
     margin-bottom: 3rem !important;
   }
 }
+
+// added override for css found in volto-block-style/stretchStyleDefaultView.css
+#main main {
+  overflow: inherit;
+}

@@ -1,5 +1,4 @@
 import React from 'react';
-import CustomCSS from './components';
 
 const applyConfig = (config) => {
   // CORS Allowed Destinations
@@ -32,16 +31,6 @@ const applyConfig = (config) => {
           </div>
         );
       },
-    },
-  ];
-
-  const appExtras = config.settings.appExtras || [];
-
-  config.settings.appExtras = [
-    ...appExtras,
-    {
-      match: '',
-      component: CustomCSS,
     },
   ];
 
