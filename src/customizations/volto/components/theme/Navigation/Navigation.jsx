@@ -16,7 +16,7 @@ import { compose } from 'redux';
 import { Button, Icon, Image, Menu } from 'semantic-ui-react';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import config from '@plone/volto/registry';
-import EUflag from '../../../../../theme/site/assets/images/europe-flag.svg';
+import EUflag from '../../../../../../theme/site/assets/images/europe-flag.svg';
 import { throttle } from 'lodash';
 
 const messages = defineMessages({
