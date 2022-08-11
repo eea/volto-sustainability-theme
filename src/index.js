@@ -70,7 +70,7 @@ const applyConfig = (config) => {
     '#ffffff',
   ];
   config.blocks.blocksConfig['columnsBlock'] = {
-    ...config.blocks.blocksConfig['columnsBlock'],
+    ...(config.blocks.blocksConfig['columnsBlock'] || {}),
     available_colors,
   };
 
