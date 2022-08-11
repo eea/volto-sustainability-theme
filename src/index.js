@@ -69,9 +69,11 @@ const applyConfig = (config) => {
     '#e3e3e3',
     '#ffffff',
   ];
-  config.blocks.blocksConfig[
-    'columnsBlock'
-  ].available_colors = available_colors;
+  config.blocks.blocksConfig['columnsBlock'] = {
+    ...config.blocks.blocksConfig['columnsBlock'],
+    available_colors,
+  };
+
   config.settings.available_colors = available_colors;
 
   //Inline-style Menu
