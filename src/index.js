@@ -77,7 +77,8 @@ const applyConfig = (config) => {
   config.settings.available_colors = available_colors;
 
   //Inline-style Menu
-
+  config.settings.slate = config.settings.slate || {};
+  config.settings.slate.styleMenu = config.settings.slate.styleMenu || {};
   config.settings.slate.styleMenu.inlineStyles = [
     ...(config.settings.slate.styleMenu?.inlineStyles || []),
 
