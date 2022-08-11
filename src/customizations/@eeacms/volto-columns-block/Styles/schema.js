@@ -1,4 +1,5 @@
 import { defineMessages } from 'react-intl';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   labelStyling: {
@@ -82,7 +83,7 @@ export const StyleSchema = (intl) => ({
     backgroundColor: {
       title: intl.formatMessage(messages.labelBackgroundColor),
       type: 'color',
-      widget: 'simple_color_picker',
+      widget: 'style_simple_color',
     },
     grid_vertical_align: {
       title: intl.formatMessage(messages.labelVerticalAlign),
@@ -119,7 +120,8 @@ export const StyleSchema = (intl) => ({
     shadowColor: {
       title: intl.formatMessage(messages.labelShadowColor),
       type: 'color',
-      widget: 'simple_color_picker',
+      widget: 'style_simple_color',
+      available_colors: config.settings.available_colors,
     },
     column_class: {
       title: intl.formatMessage(messages.labelColumnClass),
