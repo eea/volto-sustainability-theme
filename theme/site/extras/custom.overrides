@@ -146,3 +146,31 @@
 #main main {
   overflow: inherit;
 }
+
+.blue-subtitle{
+
+  color: #005d7b !important;
+  font-size : 1.5em !important; 
+
+}
+.align-icon-center {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+.blue-x-Large-center-aligned-text{
+  color: #005d7b !important;
+  text-align: center;
+  font-size: x-large;
+  line-height: 130%;
+  font-weight: bold;
+}
+.grey-center-aligned-text{
+  color: #9C9291 !important;
+  text-align: center;
+}
+.blue-background{
+ border-radius: 2px; 
+ box-shadow: rgb(227, 227, 227) 0px 0px 2px; 
+ background-color: red !important;
+}
