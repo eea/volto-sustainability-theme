@@ -169,8 +169,11 @@
   color: #9C9291 !important;
   text-align: center;
 }
-.blue-background{
- border-radius: 2px; 
- box-shadow: rgb(227, 227, 227) 0px 0px 2px; 
- background-color: red !important;
+.bordered-layout{
+  border-radius: 2px;
+  box-shadow: rgb(227, 227, 227) 0px 0px 5px;
+}
+.preset-preview{
+  background-color: rgb(227, 227, 227);
+  height: 50px;
 }
