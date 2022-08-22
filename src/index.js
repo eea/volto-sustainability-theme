@@ -79,6 +79,14 @@ const applyConfig = (config) => {
         );
       },
     },
+    {
+      id: 'bordered-layout',
+      title: 'Bordered Layout',
+      cssClass: 'bordered-layout',
+      previewComponent: () => {
+        return <div className="bordered-layout preset-preview"></div>;
+      },
+    },
   ];
 
   const available_colors = [
