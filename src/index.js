@@ -1,5 +1,8 @@
 import React from 'react';
 import './slate-inline-styles.less';
+import { Icon } from '@plone/volto/components';
+import subTextSVG from '@plone/volto/icons/subtext.svg';
+import boldSVG from '@plone/volto/icons/bold.svg';
 
 const applyConfig = (config) => {
   // CORS Allowed Destinations
@@ -31,6 +34,57 @@ const applyConfig = (config) => {
             <div className="environment-theme-header">{props.children}</div>
           </div>
         );
+      },
+    },
+    {
+      id: 'blue-subtitle',
+      title: 'Blue Subtitle',
+      cssClass: 'blue-subtitle',
+      previewComponent: () => {
+        return (
+          <Icon
+            name={subTextSVG}
+            size="60px"
+            className="blue-subtitle align-icon-center "
+          />
+        );
+      },
+    },
+
+    {
+      id: 'grey-center-aligned-text',
+      title: 'Grey Center Aligned Text',
+      cssClass: 'grey-center-aligned-text',
+      previewComponent: () => {
+        return (
+          <Icon
+            name={subTextSVG}
+            size="60px"
+            className="grey-center-aligned-text align-icon-center"
+          />
+        );
+      },
+    },
+    {
+      id: 'blue-x-Large-center-aligned-text',
+      title: 'Blue x-Large Center Aligned Text',
+      cssClass: 'blue-x-Large-center-aligned-text',
+      previewComponent: () => {
+        return (
+          <Icon
+            name={boldSVG}
+            size="60px"
+            className="blue-x-Large-center-aligned-text align-icon-center"
+          />
+        );
+      },
+    },
+    {
+      id: 'bordered-layout',
+      title: 'Bordered Layout',
+      cssClass: 'bordered-layout',
+      previewComponent: () => {
+        return <div className="bordered-layout preset-preview"></div>;
       },
     },
   ];
