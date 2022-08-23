@@ -13,8 +13,16 @@
   }
 }
 
-.ui.styled.accordion .title {
-  font-size: 20px;
+
+.title.accordion-title.align-arrow-left {
+  font-size: 20px !important;
+}
+.active.title.accordion-title.align-arrow-left {
+  font-size: 20px !important; 
+}
+.ui.styled.accordion .title, .ui.styled.accordion .accordion .title{
+  text-transform: none;
+  background: none;
 }
 
 .ui.styled.accordion .title,
