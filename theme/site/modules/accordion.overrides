@@ -25,6 +25,11 @@
   background: none;
 }
 
+.ui.styled.accordion .content .styled-slate span{
+  font-size: 1rem;
+  padding: 0em;
+}
+
 .ui.styled.accordion .title,
 .ui.styled.accordion .accordion .title,
 .ui.styled.accordion .title:hover,
