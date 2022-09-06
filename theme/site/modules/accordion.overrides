@@ -14,10 +14,17 @@
 }
 
 
-.title.accordion-title.align-arrow-left {
+.title.metadata {
+  all: revert !important;
+  font-family: revert !important;
+  font-weight: revert !important;
+}
+
+
+.title.accordion-title.align-arrow-left:not(.metadata) {
   font-size: 20px !important;
 }
-.active.title.accordion-title.align-arrow-left {
+.active.title.accordion-title.align-arrow-left:not(.metadata) {
   font-size: 20px !important; 
 }
 .ui.styled.accordion .title, .ui.styled.accordion .accordion .title{
