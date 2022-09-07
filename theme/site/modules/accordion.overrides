@@ -13,9 +13,8 @@
   }
 }
 
-
-.title.metadata {
-  all: revert !important;
+.metadata {
+  all: unset !important;
   font-family: revert !important;
   font-weight: revert !important;
 }
@@ -45,7 +44,7 @@
   color: @pureBlack;
 }
 
-.accordion span:hover {
+.accordion span:hover:not(.metadata) {
   color: @pureBlack !important;
 }
 
@@ -60,7 +59,7 @@
   border-bottom: 1px solid #ddd;
 }
 
-.ui.styled.accordion:first-child {
+.ui.styled.accordion:first-child:not(.metadata) {
   .title.accordion-title.align-arrow-left,
   .title.accordion-title.align-arrow-right {
     border-top: 1px solid #ddd;
