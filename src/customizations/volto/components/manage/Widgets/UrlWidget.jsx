@@ -1,4 +1,5 @@
 /**
+ * This should be removed once volto is upgraded to 16
  * UrlWidget component.
  * @module components/manage/Widgets/UrlWidget
  */
