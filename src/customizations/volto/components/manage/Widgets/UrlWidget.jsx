@@ -8,11 +8,15 @@ import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { Input, Button } from 'semantic-ui-react';
 import { FormFieldWrapper, Icon } from '@plone/volto/components';
-import { isInternalURL, flattenToAppURL, URLUtils } from '@plone/volto/helpers';
+import {
+  isInternalURL,
+  flattenToAppURL,
+  URLUtils,
+  toPublicURL,
+} from '@plone/volto/helpers';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
-import config from '@plone/volto/registry';
 
 /** Widget to edit urls
  *
@@ -26,13 +30,6 @@ import config from '@plone/volto/registry';
  * }
  * ```
  */
-export function addAppURL(url) {
-  const { settings } = config;
-  return url.indexOf(settings.publicURL) === 0
-    ? url
-    : `${settings.publicURL}${url}`;
-}
-
 export const UrlWidget = (props) => {
   const {
     id,
@@ -73,7 +70,7 @@ export const UrlWidget = (props) => {
 
     setValue(newValue);
 
-    newValue = isInternalURL(newValue) ? addAppURL(newValue) : newValue;
+    newValue = isInternalURL(newValue) ? toPublicURL(newValue) : newValue;
 
     if (!isInternalURL(newValue) && newValue.length > 0) {
       const checkedURL = URLUtils.checkAndNormalizeUrl(newValue);
