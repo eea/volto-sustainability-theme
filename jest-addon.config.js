@@ -5,10 +5,12 @@ module.exports = {
     '!src/**/*.d.ts',
   ],
   moduleNameMapper: {
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
     '@plone/volto/cypress': '<rootDir>/node_modules/@plone/volto/cypress',
     '@plone/volto/babel': '<rootDir>/node_modules/@plone/volto/babel',
     '@plone/volto/(.*)$': '<rootDir>/node_modules/@plone/volto/src/$1',
     '@package/(.*)$': '<rootDir>/src/$1',
+    '@root/(.*)$': '<rootDir>/src/$1',
     '@plone/volto-quanta/(.*)$': '<rootDir>/src/addons/volto-quanta/src/$1',
     '@eeacms/(.*?)/(.*)$': '<rootDir>/src/addons/$1/src/$2',
     '@plone/volto-slate':
@@ -19,9 +21,6 @@ module.exports = {
   },
   transform: {
     '^.+\\.js(x)?$': 'babel-jest',
-    '^.+\\.css$': 'jest-css-modules',
-    '^.+\\.less$': 'jest-css-modules',
-    '^.+\\.scss$': 'jest-css-modules',
     '^.+\\.(png)$': 'jest-file',
     '^.+\\.(jpg)$': 'jest-file',
     '^.+\\.(svg)$': './node_modules/@plone/volto/jest-svgsystem-transform.js',
